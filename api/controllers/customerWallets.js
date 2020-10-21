@@ -31,16 +31,14 @@ module.exports = app => {
             customerId,
         } = req.params;
 
-        const foundCustomerIndex = customerWalletsMock.data.findIndex(customer => customer.id == customerId);
-
-        if (foundCustomerIndex == -1) {
+        if (findCustomerIndex(customerId) == -1) {
             res.status(404).json({
                 message: 'Cliente não encontrado na base.',
                 success: false,
                 customerWallets: customerWalletsMock,
             });
         } else {
-            customerWalletsMock.data.splice(foundCustomerIndex, 1);
+            customerWalletsMock.data.splice(findCustomerIndex(customerId), 1);
             res.status(200).json({
                 message: 'Cliente econtrado e deletado com sucesso!',
                 success: true,
@@ -54,9 +52,9 @@ module.exports = app => {
             customerId,
         } = req.params;
 
-        const foundCustomerIndex = customerWalletsMock.data.findIndex(customer => customer.id == customerId);
+        // const foundCustomerIndex = customerWalletsMock.data.findIndex(customer => customer.id == customerId);
 
-        if (foundCustomerIndex == -1) {
+        if (findCustomerIndex(customerId) == -1) {
             res.status(404).json({
                 message: 'Cliente não encontrado na base.',
                 success: false,
@@ -76,7 +74,7 @@ module.exports = app => {
                 createdAt: new Date(),
             };
 
-            customerWalletsMock.data.splice(foundCustomerIndex, 1, updatedCostumer);
+            customerWalletsMock.data.splice(findCustomerIndex(customerId), 1, updatedCostumer);
 
             res.status(200).json({
                 message: 'Cliente econtrado e alterado com sucesso!',
@@ -86,7 +84,9 @@ module.exports = app => {
         }
     }
 
-    // function foundCustomerIndex(customerId) {}
+    function findCustomerIndex(customerId) {
+        return customerWalletsMock.data.findIndex(customer => customer.id == customerId);
+    }
 
     return controller;
 }
