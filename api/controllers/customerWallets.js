@@ -84,6 +84,26 @@ module.exports = app => {
         }
     }
 
+    controller.getCustomerWalletById = (req, res) => {
+        const {
+            customerId,
+        } = req.params;
+
+        if (findCustomerIndex(customerId) == -1) {
+            res.status(404).json({
+                message: 'Cliente não encontrado na base.',
+                success: false,
+                customerWallets: customerWalletsMock,
+            });
+        } else {
+            res.status(200).json({
+                message: 'Cliente econtrado com sucesso!',
+                success: true,
+                customerWallets: customerWalletsMock.data[findCustomerIndex(customerId)],
+            });
+        }
+    }
+
     function findCustomerIndex(customerId) {
         return customerWalletsMock.data.findIndex(customer => customer.id == customerId);
     }
