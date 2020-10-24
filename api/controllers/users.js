@@ -5,7 +5,7 @@ module.exports = app => {
     const controller = {};
 
     const {
-        Users: usersMock,
+        users: usersMock,
     } = usersDB;
 
     controller.listUsers = (req, res) => res.status(200).json(usersDB);
@@ -62,7 +62,7 @@ module.exports = app => {
                 name: req.body.name,
                 email: req.body.email,
                 type: req.body.type,
-                active: true,
+                active: req.body.active,
                 password: req.body.password,
             };
 

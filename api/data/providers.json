@@ -1,0 +1,41 @@
+{
+    "providers": {
+        "data": [{
+                "id": "5da9ea674234635bdff45c01",
+                "cnpj": "66.606.366/0001-17",
+                "companyName": "Camila e Márcio Entulhos Ltda",
+                "fancyName": "CM Entulhos",
+                "address": "Rua Manoel José Luz",
+                "cep": "07252-140",
+                "phone": "(11)3922-9583",
+                "salesman": "Camila da Silva Sauro",
+                "ranking": 10,
+                "active": true
+            },
+            {
+                "id": "5da9ea674234635bdff45c02",
+                "cnpj": "04.241.217/0001-44",
+                "companyName": "Henry e Francisco Eletrônica ME",
+                "fancyName": "HF Eletrônica",
+                "address": "Rua Guimarães Rosa",
+                "cep": "11704-160",
+                "phone": "(13)3589-4652",
+                "salesman": "Henry da Silva Sauro",
+                "ranking": 5,
+                "active": true
+            },
+            {
+                "id": "5da9ea674234635bdff45c03",
+                "cnpj": "02.599.925/0001-26",
+                "companyName": "Márcio e Isabella Casa Noturna ME",
+                "fancyName": "MI Casa Noturna",
+                "address": "Rua Carbonita",
+                "cep": "03942-010",
+                "phone": "(11)2636-9360",
+                "salesman": "Isabella da Silva Sauro",
+                "ranking": 0,
+                "active": false
+            }
+        ]
+    }
+}
