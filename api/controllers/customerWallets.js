@@ -2,6 +2,8 @@ const uuidv4 = require('uuid/v4');
 
 module.exports = app => {
     const customerWalletsDB = app.data.customerWallets;
+    // TODO: Importar o metodo de outra classe
+    // const jsonUtils = require('./utils/jsonUtils.js');
     const controller = {};
 
     const {
@@ -85,6 +87,7 @@ module.exports = app => {
     }
 
     controller.getCustomerWalletById = (req, res) => {
+
         const {
             customerId,
         } = req.params;

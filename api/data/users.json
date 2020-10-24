@@ -1,0 +1,29 @@
+{
+    "Users": {
+        "data": [{
+                "id": "5da9ea674234635bdff45c01",
+                "name": "Henrique Pinheiro Rodrigues",
+                "email": "henrique@email.com.br",
+                "type": 1,
+                "active": true,
+                "password": "Senha@2020"
+            },
+            {
+                "id": "5da9ea674234635bdff45c02",
+                "name": "Acacio Junior",
+                "email": "acacio@email.com.br",
+                "type": 2,
+                "active": true,
+                "password": "Senha@2020"
+            },
+            {
+                "id": "5da9ea674234635bdff45c03",
+                "name": "Angelino Oliveira",
+                "email": "angelino@email.com.br",
+                "type": 3,
+                "active": false,
+                "password": "Senha@2020"
+            }
+        ]
+    }
+}
