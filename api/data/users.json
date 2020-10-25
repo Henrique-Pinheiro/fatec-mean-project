@@ -1,7 +1,7 @@
 {
     "users": {
         "data": [{
-                "id": "5da9ea674234635bdff45c01",
+                "id": 1,
                 "name": "Henrique Pinheiro Rodrigues",
                 "email": "henrique@email.com.br",
                 "type": 1,
@@ -9,7 +9,7 @@
                 "password": "Senha@2020"
             },
             {
-                "id": "5da9ea674234635bdff45c02",
+                "id": 2,
                 "name": "Acacio Junior",
                 "email": "acacio@email.com.br",
                 "type": 2,
@@ -17,7 +17,7 @@
                 "password": "Senha@2020"
             },
             {
-                "id": "5da9ea674234635bdff45c03",
+                "id": 3,
                 "name": "Angelino Oliveira",
                 "email": "angelino@email.com.br",
                 "type": 3,

@@ -79,7 +79,7 @@ module.exports = app => {
             providersMock.data.splice(findIndexById(providerId), 1, updatedCostumer);
 
             res.status(200).json({
-                message: 'Cliente econtrado e alterado com sucesso!',
+                message: 'Fornecedor econtrado e alterado com sucesso!',
                 success: true,
                 providers: providersMock
             });

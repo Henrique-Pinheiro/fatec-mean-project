@@ -1,0 +1,26 @@
+{
+    "prices": {
+        "data": [{
+                "id": 1,
+                "requestDate": "2019-10-18T16:37:58.979Z",
+                "priceState": 1,
+                "request": 1,
+                "provider": 1
+            },
+            {
+                "id": 2,
+                "requestDate": "2019-10-19T16:37:58.979Z",
+                "priceState": 2,
+                "request": 2,
+                "provider": 2
+            },
+            {
+                "id": 3,
+                "requestDate": "2019-10-20T16:37:58.979Z",
+                "priceState": 3,
+                "request": 3,
+                "provider": 3
+            }
+        ]
+    }
+}

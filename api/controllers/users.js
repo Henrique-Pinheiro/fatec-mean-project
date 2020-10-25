@@ -38,7 +38,7 @@ module.exports = app => {
         } else {
             usersMock.data.splice(findIndexById(userId), 1);
             res.status(200).json({
-                message: 'Usuario econtrado e deletado com sucesso!',
+                message: 'Usuario encontrado e deletado com sucesso!',
                 success: true,
                 users: usersMock
             });
@@ -69,7 +69,7 @@ module.exports = app => {
             usersMock.data.splice(findIndexById(userId), 1, updatedCostumer);
 
             res.status(200).json({
-                message: 'Cliente econtrado e alterado com sucesso!',
+                message: 'Usuario encontrado e alterado com sucesso!',
                 success: true,
                 users: usersMock
             });
@@ -89,7 +89,7 @@ module.exports = app => {
             });
         } else {
             res.status(200).json({
-                message: 'Usuario econtrado com sucesso!',
+                message: 'Usuario encontrado com sucesso!',
                 success: true,
                 users: usersMock.data[findIndexById(userId)],
             });
