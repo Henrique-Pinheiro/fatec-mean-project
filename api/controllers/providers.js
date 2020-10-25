@@ -64,7 +64,7 @@ module.exports = app => {
             });
         } else {
             const updatedCostumer = {
-                id: providerId,
+                id: parseInt(providerId),
                 cnpj: req.body.cnpj,
                 companyName: req.body.companyName,
                 fancyName: req.body.fancyName,

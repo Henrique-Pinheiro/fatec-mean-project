@@ -13,7 +13,7 @@ module.exports = app => {
     controller.saveUser = (req, res) => {
 
         usersMock.data.push({
-            id: uuidv4(),
+            id: 4,
             name: req.body.name,
             email: req.body.email,
             type: req.body.type,
@@ -58,7 +58,7 @@ module.exports = app => {
             });
         } else {
             const updatedCostumer = {
-                id: userId,
+                id: parseInt(userId),
                 name: req.body.name,
                 email: req.body.email,
                 type: req.body.type,

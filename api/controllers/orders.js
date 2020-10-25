@@ -63,7 +63,7 @@ module.exports = app => {
             });
         } else {
             const updatedCostumer = {
-                id: orderId,
+                id: parseInt(orderId),
                 totalPriceValue: req.body.totalPriceValue,
                 totalUnits: req.body.totalUnits,
                 orderState: req.body.orderState,

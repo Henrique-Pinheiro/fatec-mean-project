@@ -1,0 +1,26 @@
+{
+    "materials": {
+        "data": [{
+                "id": 1,
+                "name": "Lingote de Aço",
+                "unity": "UN",
+                "type": "Aço",
+                "active": true
+            },
+            {
+                "id": 2,
+                "name": "Carvão",
+                "unity": "KG",
+                "type": "Operacional",
+                "active": true
+            },
+            {
+                "id": 3,
+                "name": "Caneta",
+                "unity": "CX",
+                "type": "almoxarifado",
+                "active": true
+            }
+        ]
+    }
+}

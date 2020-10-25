@@ -57,7 +57,7 @@ module.exports = app => {
             });
         } else {
             const updatedCostumer = {
-                id: priceId,
+                id: parseInt(priceId),
                 requestDate: req.body.requestDate,
                 priceState: req.body.priceState,
                 request: req.body.request,
