@@ -1,0 +1,41 @@
+{
+    "providersMaterials": {
+        "data": [{
+                "providerId": 1,
+                "materialId": 1
+            },
+            {
+                "providerId": 1,
+                "materialId": 11
+            },
+            {
+                "providerId": 1,
+                "materialId": 111
+            },
+            {
+                "providerId": 2,
+                "materialId": 2
+            },
+            {
+                "providerId": 2,
+                "materialId": 22
+            },
+            {
+                "providerId": 2,
+                "materialId": 222
+            },
+            {
+                "providerId": 3,
+                "materialId": 3
+            },
+            {
+                "providerId": 3,
+                "materialId": 33
+            },
+            {
+                "providerId": 3,
+                "materialId": 333
+            }
+        ]
+    }
+}
