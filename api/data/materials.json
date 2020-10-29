@@ -2,24 +2,39 @@
     "materials": {
         "data": [{
                 "id": 1,
-                "name": "Lingote de Aço",
+                "description": "Lingote de Aço",
                 "unity": "UN",
-                "type": "Aço",
-                "active": true
+                "weight": 10.000,
+                "width": 10.0,
+                "height": 10,
+                "createdAt": "2019-10-19T16:37:58.979Z",
+                "attendanceDate": "2019-10-19T17:37:58.979Z",
+                "active": true,
+                "groupId": 1
             },
             {
                 "id": 2,
-                "name": "Carvão",
+                "description": "Carvão",
                 "unity": "KG",
-                "type": "Operacional",
-                "active": true
+                "weight": 10.000,
+                "width": 10.0,
+                "height": 10,
+                "createdAt": "2019-10-19T16:37:58.979Z",
+                "attendanceDate": "2019-10-19T17:37:58.979Z",
+                "active": true,
+                "groupId": 2
             },
             {
                 "id": 3,
-                "name": "Caneta",
+                "description": "Caneta",
                 "unity": "CX",
-                "type": "almoxarifado",
-                "active": true
+                "weight": 10.000,
+                "width": 10.0,
+                "height": 10,
+                "createdAt": "2019-10-19T16:37:58.979Z",
+                "attendanceDate": "2019-10-19T17:37:58.979Z",
+                "active": true,
+                "groupId": 3
             }
         ]
     }

@@ -4,25 +4,28 @@
                 "id": 1,
                 "name": "Henrique Pinheiro Rodrigues",
                 "email": "henrique@email.com.br",
-                "type": 1,
                 "active": true,
-                "password": "Senha@2020"
+                "password": "Senha@2020",
+                "permissionId": 1,
+                "departmentId": 1
             },
             {
                 "id": 2,
                 "name": "Acacio Junior",
                 "email": "acacio@email.com.br",
-                "type": 2,
                 "active": true,
-                "password": "Senha@2020"
+                "password": "Senha@2020",
+                "permissionId": 2,
+                "departmentId": 2
             },
             {
                 "id": 3,
                 "name": "Angelino Oliveira",
                 "email": "angelino@email.com.br",
-                "type": 3,
                 "active": false,
-                "password": "Senha@2020"
+                "password": "Senha@2020",
+                "permissionId": 3,
+                "departmentId": 3
             }
         ]
     }

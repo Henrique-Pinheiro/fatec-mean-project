@@ -14,16 +14,8 @@ module.exports = app => {
 
         ordersMock.data.push({
             id: 4,
-            totalPriceValue: req.body.totalPriceValue,
-            totalUnits: req.body.totalUnits,
-            orderState: req.body.orderState,
-            price: req.body.price,
-            request: req.body.request,
-            provider: req.body.provider,
-            stateDate: req.body.stateDate,
-            orderDate: req.body.orderDate,
-            stipulatedDeliveryDate: req.body.stipulatedDeliveryDate,
-            realDeliveryDate: req.body.realDeliveryDate,
+            status: partseInt(req.body.status),
+            createdAt: req.body.createdAt,
         });
 
         res.status(201).json(ordersMock);
@@ -64,16 +56,8 @@ module.exports = app => {
         } else {
             const updatedCostumer = {
                 id: parseInt(orderId),
-                totalPriceValue: req.body.totalPriceValue,
-                totalUnits: req.body.totalUnits,
-                orderState: req.body.orderState,
-                price: req.body.price,
-                request: req.body.request,
-                provider: req.body.provider,
-                stateDate: req.body.stateDate,
-                orderDate: req.body.orderDate,
-                stipulatedDeliveryDate: req.body.stipulatedDeliveryDate,
-                realDeliveryDate: req.body.realDeliveryDate,
+                status: partseInt(req.body.status),
+                createdAt: req.body.createdAt,
             };
 
             ordersMock.data.splice(findIndexById(orderId), 1, updatedCostumer);

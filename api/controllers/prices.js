@@ -15,9 +15,10 @@ module.exports = app => {
         pricesMock.data.push({
             id: 4,
             requestDate: req.body.requestDate,
-            priceState: req.body.priceState,
-            request: req.body.request,
-            provider: req.body.provider,
+            status: req.body.status,
+            deadline: req.body.deadline,
+            requester: req.body.requester,
+            fare: parseFloat(req.body.fare),
         });
 
         res.status(201).json(pricesMock);
@@ -59,9 +60,10 @@ module.exports = app => {
             const updatedCostumer = {
                 id: parseInt(priceId),
                 requestDate: req.body.requestDate,
-                priceState: req.body.priceState,
-                request: req.body.request,
-                provider: req.body.provider,
+                status: req.body.status,
+                deadline: req.body.deadline,
+                requester: req.body.requester,
+                fare: parseFloat(req.body.fare),
             };
 
             pricesMock.data.splice(findIndexById(priceId), 1, updatedCostumer);

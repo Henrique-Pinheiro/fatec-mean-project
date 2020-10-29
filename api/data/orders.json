@@ -2,42 +2,18 @@
     "orders": {
         "data": [{
                 "id": 1,
-                "totalPriceValue": 1111.11,
-                "totalUnits": 11,
-                "orderState": 1,
-                "price": 1,
-                "request": 1,
-                "provider": 1,
-                "stateDate": "2019-10-18T16:37:58.979Z",
-                "orderDate": "2019-10-18T16:37:58.979Z",
-                "stipulatedDeliveryDate": "2019-11-18T16:37:58.979Z",
-                "realDeliveryDate": "2019-11-18T16:37:58.979Z"
+                "status": 11,
+                "createAt": "2019-10-18T16:37:58.979Z"
             },
             {
                 "id": 2,
-                "totalPriceValue": 2222.22,
-                "totalUnits": 22,
-                "orderState": 2,
-                "price": 2,
-                "request": 2,
-                "provider": 2,
-                "stateDate": "2019-10-19T16:37:58.979Z",
-                "orderDate": "2019-10-19T16:37:58.979Z",
-                "stipulatedDeliveryDate": "2019-11-19T16:37:58.979Z",
-                "realDeliveryDate": "2019-11-19T16:37:58.979Z"
+                "status": 22,
+                "createdAt": "2019-10-19T16:37:58.979Z",
             },
             {
                 "id": 3,
-                "totalPriceValue": 3333.33,
-                "totalUnits": 33,
-                "orderState": 3,
-                "price": 3,
-                "request": 3,
-                "provider": 3,
-                "stateDate": "2019-10-20T16:37:58.979Z",
-                "orderDate": "2019-10-20T16:37:58.979Z",
-                "stipulatedDeliveryDate": "2019-11-20T16:37:58.979Z",
-                "realDeliveryDate": "2019-11-20T16:37:58.979Z"
+                "status": 33,
+                "createdAt": "2019-10-20T16:37:58.979Z",
             }
         ]
     }

@@ -19,6 +19,8 @@ module.exports = app => {
             type: req.body.type,
             active: true,
             password: req.body.password,
+            permissionId: req.body.permissionId,
+            departmentId: req.body.departmentId,
         });
 
         res.status(201).json(usersMock);
@@ -64,6 +66,8 @@ module.exports = app => {
                 type: req.body.type,
                 active: req.body.active,
                 password: req.body.password,
+                permissionId: parseInt(req.body.permissionId),
+                departmentId: parseInt(req.body.departmentId),
             };
 
             usersMock.data.splice(findIndexById(userId), 1, updatedCostumer);

@@ -17,8 +17,8 @@ module.exports = app => {
             requestDate: req.body.requestDate,
             justification: req.body.justification,
             priority: req.body.priority,
-            state: req.body.state,
-            stateDate: req.body.stateDate,
+            status: req.body.status,
+            desiredDate: req.body.desiredDate,
             requester: req.body.requester,
             approver: req.body.approver,
         });
@@ -64,8 +64,8 @@ module.exports = app => {
                 requestDate: req.body.requestDate,
                 justification: req.body.justification,
                 priority: req.body.priority,
-                state: req.body.state,
-                stateDate: req.body.stateDate,
+                status: req.body.status,
+                desiredDate: req.body.desiredDate,
                 requester: req.body.requester,
                 approver: req.body.approver,
             };

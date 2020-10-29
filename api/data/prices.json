@@ -2,24 +2,30 @@
     "prices": {
         "data": [{
                 "id": 1,
+                "description": "Essa é a descrição da cotação",
                 "requestDate": "2019-10-18T16:37:58.979Z",
-                "priceState": 1,
-                "request": 1,
-                "provider": 1
+                "deadline": "2019-10-19T16:37:58.979Z",
+                "status": 1,
+                "requester": 1,
+                "fare": 1023.12
             },
             {
                 "id": 2,
+                "description": "Essa é a descrição da cotação",
                 "requestDate": "2019-10-19T16:37:58.979Z",
-                "priceState": 2,
-                "request": 2,
-                "provider": 2
+                "deadline": "2019-10-20T16:37:58.979Z",
+                "status": 2,
+                "requester": 2,
+                "fare": 1023.12
             },
             {
                 "id": 3,
+                "description": "Essa é a descrição da cotação",
                 "requestDate": "2019-10-20T16:37:58.979Z",
-                "priceState": 3,
-                "request": 3,
-                "provider": 3
+                "deadline": "2019-10-21T16:37:58.979Z",
+                "status": 3,
+                "requester": 3,
+                "fare": 1023.12
             }
         ]
     }

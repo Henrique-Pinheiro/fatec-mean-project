@@ -18,8 +18,13 @@ module.exports = app => {
             id: 4,
             name: req.body.name,
             unity: req.body.unity,
-            type: req.body.type,
+            weight: parteInt(req.body.weight),
+            width: parteInt(req.body.width),
+            height: parteInt(req.body.height),
+            createdAt: req.body.createdAt,
+            attendanceDate: req.body.attendanceDate,
             active: true,
+            groupId: parteInt(req.body.groupId),
         });
 
         res.status(201).json(materialsMock);
@@ -62,8 +67,13 @@ module.exports = app => {
                 id: parseInt(materialId),
                 name: req.body.name,
                 unity: req.body.unity,
-                type: req.body.type,
-                active: req.body.active,
+                weight: parteInt(req.body.weight),
+                width: parteInt(req.body.width),
+                height: parteInt(req.body.height),
+                createdAt: req.body.createdAt,
+                attendanceDate: req.body.attendanceDate,
+                active: true,
+                groupId: parteInt(req.body.groupId),
             };
 
             materialsMock.data.splice(findIndexById(materialId), 1, updatedCostumer);
