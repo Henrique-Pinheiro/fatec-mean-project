@@ -1,0 +1,17 @@
+{
+    "groups": {
+        "data": [{
+                "id": 1,
+                "description": "Administrativo"
+            },
+            {
+                "id": 2,
+                "description": "Operacional"
+            },
+            {
+                "id": 3,
+                "description": "Escritorio"
+            }
+        ]
+    }
+}

@@ -29,14 +29,14 @@ module.exports = app => {
 
         if (findIndexById(departmentId) == -1) {
             res.status(404).json({
-                message: 'Permissão não encontrada na base.',
+                message: 'Departamento não encontrado na base.',
                 success: false,
                 departments: departmentsMock,
             });
         } else {
             departmentsMock.data.splice(findIndexById(departmentId), 1);
             res.status(200).json({
-                message: 'Permissão encontrada e deletado com sucesso!',
+                message: 'Departamento encontrado e deletado com sucesso!',
                 success: true,
                 departments: departmentsMock
             });
@@ -50,7 +50,7 @@ module.exports = app => {
 
         if (findIndexById(departmentId) == -1) {
             res.status(404).json({
-                message: 'Permissão não encontrada na base.',
+                message: 'Departamento não encontrado na base.',
                 success: false,
                 departments: departmentsMock,
             });
@@ -65,7 +65,7 @@ module.exports = app => {
             departmentsMock.data.splice(findIndexById(departmentId), 1, updatedCostumer);
 
             res.status(200).json({
-                message: 'Permissão econtrada e alterada com sucesso!',
+                message: 'Departamento econtrada e alterada com sucesso!',
                 success: true,
                 departments: departmentsMock
             });
@@ -79,13 +79,13 @@ module.exports = app => {
 
         if (findIndexById(departmentId) == -1) {
             res.status(404).json({
-                message: 'Permissão não encontrada na base.',
+                message: 'Departamento não encontrado na base.',
                 success: false,
                 departments: departmentsMock,
             });
         } else {
             res.status(200).json({
-                message: 'Permissão encontrada com sucesso!',
+                message: 'Departamento encontrado com sucesso!',
                 success: true,
                 departments: departmentsMock.data[findIndexById(departmentId)],
             });
