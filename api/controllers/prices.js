@@ -15,9 +15,9 @@ module.exports = app => {
         pricesMock.data.push({
             id: 4,
             requestDate: req.body.requestDate,
-            status: req.body.status,
+            status: parseInt(req.body.status),
             deadline: req.body.deadline,
-            requester: req.body.requester,
+            requester: parseInt(req.body.requester),
             fare: parseFloat(req.body.fare),
         });
 
@@ -60,9 +60,9 @@ module.exports = app => {
             const updatedCostumer = {
                 id: parseInt(priceId),
                 requestDate: req.body.requestDate,
-                status: req.body.status,
+                status: parseInt(req.body.status),
                 deadline: req.body.deadline,
-                requester: req.body.requester,
+                requester: parseInt(req.body.requester),
                 fare: parseFloat(req.body.fare),
             };
 

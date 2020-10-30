@@ -17,10 +17,10 @@ module.exports = app => {
             requestDate: req.body.requestDate,
             justification: req.body.justification,
             priority: req.body.priority,
-            status: req.body.status,
+            status: parseInt(req.body.status),
             desiredDate: req.body.desiredDate,
-            requester: req.body.requester,
-            approver: req.body.approver,
+            requester: parseInt(req.body.requester),
+            approver: parseInt(req.body.approver),
         });
 
         res.status(201).json(requestsMock);
@@ -64,10 +64,10 @@ module.exports = app => {
                 requestDate: req.body.requestDate,
                 justification: req.body.justification,
                 priority: req.body.priority,
-                status: req.body.status,
+                status: parseInt(req.body.status),
                 desiredDate: req.body.desiredDate,
-                requester: req.body.requester,
-                approver: req.body.approver,
+                requester: parseInt(req.body.requester),
+                approver: parseInt(req.body.approver),
             };
 
             requestsMock.data.splice(findIndexById(requestId), 1, updatedCostumer);
