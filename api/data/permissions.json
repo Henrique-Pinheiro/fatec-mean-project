@@ -1,0 +1,17 @@
+{
+    "permissions": {
+        "data": [{
+                "id": 1,
+                "description": "Administrador"
+            },
+            {
+                "id": 2,
+                "description": "Comprador"
+            },
+            {
+                "id": 3,
+                "description": "Basica"
+            }
+        ]
+    }
+}
