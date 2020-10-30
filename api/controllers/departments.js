@@ -1,95 +1,99 @@
 const uuidv4 = require('uuid/v4');
 
 module.exports = app => {
-    const permissionsDB = app.data.permissions;
+    const departmentsDB = app.data.departments;
     const controller = {};
 
     const {
-        permissions: permissionsMock,
-    } = permissionsDB;
+        departments: departmentsMock,
+    } = departmentsDB;
 
-    controller.listPermissions = (req, res) => res.status(200).json(permissionsDB);
+    controller.listDepartments = (req, res) => res.status(200).json(departmentsDB);
 
-    controller.savePermission = (req, res) => {
+    controller.saveDepartment = (req, res) => {
 
-        permissionsMock.data.push({
+        departmentsMock.data.push({
             id: 4,
+            managerId: parseInt(req.body.managerId),
             description: req.body.description,
+            active: req.body.active,
         });
 
-        res.status(201).json(permissionsMock);
+        res.status(201).json(departmentsMock);
     }
 
-    controller.removePermission = (req, res) => {
+    controller.removeDepartment = (req, res) => {
         const {
-            permissionId,
+            departmentId,
         } = req.params;
 
-        if (findIndexById(permissionId) == -1) {
+        if (findIndexById(departmentId) == -1) {
             res.status(404).json({
                 message: 'Permissão não encontrada na base.',
                 success: false,
-                permissions: permissionsMock,
+                departments: departmentsMock,
             });
         } else {
-            permissionsMock.data.splice(findIndexById(permissionId), 1);
+            departmentsMock.data.splice(findIndexById(departmentId), 1);
             res.status(200).json({
                 message: 'Permissão encontrada e deletado com sucesso!',
                 success: true,
-                permissions: permissionsMock
+                departments: departmentsMock
             });
         }
     };
 
-    controller.updatePermission = (req, res) => {
+    controller.updateDepartment = (req, res) => {
         const {
-            permissionId,
+            departmentId,
         } = req.params;
 
-        if (findIndexById(permissionId) == -1) {
+        if (findIndexById(departmentId) == -1) {
             res.status(404).json({
                 message: 'Permissão não encontrada na base.',
                 success: false,
-                permissions: permissionsMock,
+                departments: departmentsMock,
             });
         } else {
             const updatedCostumer = {
-                id: parseInt(permissionId),
+                id: parseInt(departmentId),
+                managerId: parseInt(req.body.managerId),
                 description: req.body.description,
+                active: req.body.active,
             };
 
-            permissionsMock.data.splice(findIndexById(permissionId), 1, updatedCostumer);
+            departmentsMock.data.splice(findIndexById(departmentId), 1, updatedCostumer);
 
             res.status(200).json({
                 message: 'Permissão econtrada e alterada com sucesso!',
                 success: true,
-                permissions: permissionsMock
+                departments: departmentsMock
             });
         }
     }
 
-    controller.getPermissionById = (req, res) => {
+    controller.getDepartmentById = (req, res) => {
         const {
-            permissionId,
+            departmentId,
         } = req.params;
 
-        if (findIndexById(permissionId) == -1) {
+        if (findIndexById(departmentId) == -1) {
             res.status(404).json({
                 message: 'Permissão não encontrada na base.',
                 success: false,
-                permissions: permissionsMock,
+                departments: departmentsMock,
             });
         } else {
             res.status(200).json({
                 message: 'Permissão encontrada com sucesso!',
                 success: true,
-                permissions: permissionsMock.data[findIndexById(permissionId)],
+                departments: departmentsMock.data[findIndexById(departmentId)],
             });
         }
     }
 
     function findIndexById(id) {
-        return permissionsMock.data.findIndex(json => json.id == id);
+        return departmentsMock.data.findIndex(json => json.id == id);
     }
 
     return controller;

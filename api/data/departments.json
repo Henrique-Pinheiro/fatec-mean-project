@@ -1,0 +1,23 @@
+{
+    "departments": {
+        "data": [{
+                "id": 1,
+                "managerId": 1,
+                "description": "Departamento de Compras",
+                "active": true
+            },
+            {
+                "id": 2,
+                "managerId": 2,
+                "description": "Departamento de Vendas",
+                "active": true
+            },
+            {
+                "id": 3,
+                "managerId": 3,
+                "description": "Almoxarifado",
+                "active": false
+            }
+        ]
+    }
+}
