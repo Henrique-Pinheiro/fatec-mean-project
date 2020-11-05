@@ -1,0 +1,41 @@
+{
+    "providersPrices": {
+        "data": [{
+                "providerId": 1,
+                "priceId": 1
+            },
+            {
+                "providerId": 1,
+                "priceId": 11
+            },
+            {
+                "providerId": 1,
+                "priceId": 111
+            },
+            {
+                "providerId": 2,
+                "priceId": 2
+            },
+            {
+                "providerId": 2,
+                "priceId": 22
+            },
+            {
+                "providerId": 2,
+                "priceId": 222
+            },
+            {
+                "providerId": 3,
+                "priceId": 3
+            },
+            {
+                "providerId": 3,
+                "priceId": 33
+            },
+            {
+                "providerId": 3,
+                "priceId": 333
+            }
+        ]
+    }
+}
