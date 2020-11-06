@@ -22,7 +22,6 @@ module.exports = app => {
             permissionId: parseInt(req.body.permissionId),
             departmentId: parseInt(req.body.departmentId),
         });
-
         res.status(201).json(usersMock);
     }
 
