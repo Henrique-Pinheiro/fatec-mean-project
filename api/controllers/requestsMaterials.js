@@ -13,8 +13,6 @@ module.exports = app => {
             requestId,
         } = req.params;
 
-        const matchedIdsJson = [];
-
         if (findRequestIndexById(requestId) == -1) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
@@ -22,12 +20,6 @@ module.exports = app => {
                 requests: RequestMaterialMock,
             });
         } else {
-            RequestMaterialMock.data.forEach(element => {
-                if (element.requestId == requestId) {
-                    matchedIdsJson.push(element);
-                }
-            });
-
             res.status(200).json(filterByRequestId(RequestMaterialMock.data, requestId));
         }
     };
