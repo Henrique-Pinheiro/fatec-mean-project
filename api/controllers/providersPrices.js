@@ -36,8 +36,6 @@ module.exports = app => {
             providerId,
         } = req.params;
 
-        console.log('batata: ' + findProviderIndexById(providerId));
-
         if (findProviderIndexById(providerId) == -1) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
