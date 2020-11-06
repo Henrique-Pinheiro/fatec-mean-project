@@ -27,7 +27,6 @@ module.exports = app => {
                     matchedIdsJson.push(element);
                 }
             });
-
             res.status(200).json(filterByProviderId(ProviderPriceMock.data, providerId));
         }
     };
@@ -37,13 +36,20 @@ module.exports = app => {
             providerId,
         } = req.params;
 
-        ProviderPriceMock.data.push({
-            providerId: parseInt(providerId),
-            //TODO: Verificar se existe na base de dados antes
-            priceId: parseInt(req.body.priceId),
-        });
-
-        res.status(201).json(filterByProviderId(ProviderPriceMock.data, providerId));
+        if (findProviderIndexById(providerId) == -1) {
+            res.status(404).json({
+                message: 'Fornecedor não encontrado na base.',
+                success: false,
+                providers: ProviderPriceMock,
+            });
+        } else {
+            ProviderPriceMock.data.push({
+                providerId: parseInt(providerId),
+                //TODO: Verificar se existe na base de dados antes
+                priceId: parseInt(req.body.priceId),
+            });
+            res.status(201).json(filterByProviderId(ProviderPriceMock.data, providerId));
+        }
     }
 
     controller.removeProviderPrice = (req, res) => {
