@@ -74,7 +74,7 @@ module.exports = app => {
             } else {
                 ProviderPriceMock.data.splice(findPriceIndexById(priceId), 1);
                 res.status(200).json({
-                    message: 'Fornecedor e sua cotacao econtrados e deletados com sucesso!',
+                    message: 'Fornecedor e seu cotacao econtrados e deletados com sucesso!',
                     success: true,
                     providers: listPricesByProvidedId(ProviderPriceMock, providerId),
                 });
