@@ -1,0 +1,50 @@
+{
+    "requestsMaterials": {
+        "data": [{
+                "requestId": 1,
+                "materialId": 1,
+                "amount": 1
+            },
+            {
+                "requestId": 1,
+                "materialId": 11,
+                "amount": 11
+            },
+            {
+                "requestId": 1,
+                "materialId": 111,
+                "amount": 111
+            },
+            {
+                "requestId": 2,
+                "materialId": 2,
+                "amount": 2
+            },
+            {
+                "requestId": 2,
+                "materialId": 22,
+                "amount": 22
+            },
+            {
+                "requestId": 2,
+                "materialId": 222,
+                "amount": 222
+            },
+            {
+                "requestId": 3,
+                "materialId": 3,
+                "amount": 3
+            },
+            {
+                "requestId": 3,
+                "materialId": 33,
+                "amount": 33
+            },
+            {
+                "requestId": 3,
+                "materialId": 333,
+                "amount": 333
+            }
+        ]
+    }
+}
