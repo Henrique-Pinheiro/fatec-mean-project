@@ -1,40 +1,82 @@
 {
     "providersPrices": {
         "data": [{
-                "providerId": 1,
-                "priceId": 1
+                "provider": {
+                    "id": 1,
+                    "cnpj": "66.606.366/0001-17",
+                    "companyName": "Camila e Márcio Entulhos Ltda",
+                    "ie": 1,
+                    "address": "Rua Manoel José Luz",
+                    "number": 1,
+                    "cep": "07252-140",
+                    "city": "São Paulo",
+                    "uf": "SP",
+                    "phone": "(11)3922-9583",
+                    "mobile": "(11)99760-6747",
+                    "salesman": "Camila da Silva Sauro",
+                    "active": true
+                },
+                "price": {
+                    "id": 1,
+                    "description": "Essa é a descrição da cotação",
+                    "requestDate": "2019-10-18T16:37:58.979Z",
+                    "deadline": "2019-10-19T16:37:58.979Z",
+                    "status": 1,
+                    "requester": 1,
+                    "fare": 1023.12
+                }
             },
             {
-                "providerId": 1,
-                "priceId": 11
+                "provider": {
+                    "id": 2,
+                    "cnpj": "04.241.217/0001-44",
+                    "companyName": "Henry e Francisco Eletrônica ME",
+                    "ie": 2,
+                    "address": "Rua Guimarães Rosa",
+                    "number": 2,
+                    "cep": "11704-160",
+                    "city": "São Paulo",
+                    "uf": "SP",
+                    "phone": "(13)3589-4652",
+                    "mobile": "(11)99760-6747",
+                    "salesman": "Henry da Silva Sauro",
+                    "active": true
+                },
+                "price": {
+                    "id": 2,
+                    "description": "Essa é a descrição da cotação",
+                    "requestDate": "2019-10-19T16:37:58.979Z",
+                    "deadline": "2019-10-20T16:37:58.979Z",
+                    "status": 2,
+                    "requester": 2,
+                    "fare": 1023.12
+                }
             },
             {
-                "providerId": 1,
-                "priceId": 111
-            },
-            {
-                "providerId": 2,
-                "priceId": 2
-            },
-            {
-                "providerId": 2,
-                "priceId": 22
-            },
-            {
-                "providerId": 2,
-                "priceId": 222
-            },
-            {
-                "providerId": 3,
-                "priceId": 3
-            },
-            {
-                "providerId": 3,
-                "priceId": 33
-            },
-            {
-                "providerId": 3,
-                "priceId": 333
+                "provider": {
+                    "id": 3,
+                    "cnpj": "02.599.925/0001-26",
+                    "companyName": "Márcio e Isabella Casa Noturna ME",
+                    "ie": 3,
+                    "address": "Rua Carbonita",
+                    "number": 3,
+                    "cep": "03942-010",
+                    "city": "São Paulo",
+                    "uf": "SP",
+                    "phone": "(11)2636-9360",
+                    "mobile": "(11)99760-6747",
+                    "salesman": "Isabella da Silva Sauro",
+                    "active": false
+                },
+                "price": {
+                    "id": 3,
+                    "description": "Essa é a descrição da cotação",
+                    "requestDate": "2019-10-20T16:37:58.979Z",
+                    "deadline": "2019-10-21T16:37:58.979Z",
+                    "status": 3,
+                    "requester": 3,
+                    "fare": 1023.12
+                }
             }
         ]
     }

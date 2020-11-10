@@ -22,11 +22,6 @@ module.exports = app => {
                 providers: ProviderPriceMock,
             });
         } else {
-            ProviderPriceMock.data.forEach(element => {
-                if (element.providerId == providerId) {
-                    matchedIdsJson.push(element);
-                }
-            });
             res.status(200).json(filterByProviderId(ProviderPriceMock.data, providerId));
         }
     };
@@ -44,9 +39,9 @@ module.exports = app => {
             });
         } else {
             ProviderPriceMock.data.push({
-                providerId: parseInt(providerId),
+                provider: parseInt(providerId),
                 //TODO: Verificar se existe na base de dados antes
-                priceId: parseInt(req.body.priceId),
+                price: parseInt(req.body.price),
             });
             res.status(201).json(filterByProviderId(ProviderPriceMock.data, providerId));
         }
@@ -87,6 +82,7 @@ module.exports = app => {
             providerId,
             priceId,
         } = req.params;
+
         if (findProviderIndexById(providerId) == -1) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
@@ -104,7 +100,7 @@ module.exports = app => {
                 const updatedJson = {
                     providerId: parseInt(providerId),
                     //TODO: Verificar se existe na base de dados antes
-                    priceId: parseInt(req.body.priceId),
+                    price: parseInt(req.body.price),
                 };
 
                 ProviderPriceMock.data.splice(findPriceIndexById(priceId), 1, updatedJson);
@@ -123,6 +119,7 @@ module.exports = app => {
             providerId,
             priceId,
         } = req.params;
+
         if (findProviderIndexById(providerId) == -1) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
@@ -147,18 +144,29 @@ module.exports = app => {
     }
 
     function findProviderIndexById(id) {
-        return ProviderPriceMock.data.findIndex(json => json.providerId == id);
+        const matchedIdsJson = [];
+
+
+        ProviderPriceMock.data.forEach(element => {
+            if (element.provider.id == id) {
+                matchedIdsJson.push(element);
+            }
+        });
+
+        console.log(matchedIdsJson);
+
+        return matchedIdsJson;
     }
 
     function findPriceIndexById(id) {
-        return ProviderPriceMock.data.findIndex(json => json.priceId == id);
+        return ProviderPriceMock.data.findIndex(json => json.price == id);
     }
 
     function filterByProviderId(jsonArray, providerId) {
         const matchedIdsJson = [];
 
         jsonArray.forEach(element => {
-            if (element.providerId == providerId) {
+            if (element.provider == providerId) {
                 matchedIdsJson.push(element);
             }
         });
@@ -170,7 +178,7 @@ module.exports = app => {
         const matchedIdsJson = [];
 
         jsonObject.data.forEach(element => {
-            if (element.providerId == providerId) {
+            if (element.provider == providerId) {
                 matchedIdsJson.push(element);
             }
         });

@@ -1,0 +1,77 @@
+{
+    "requestsMaterialsProviders": {
+        "data": [{
+                "requestId": 1,
+                "materialId": 1,
+                "providerId": 1,
+                "unityPrice": 100.00,
+                "createdAt": "2019-10-18T16:37:58.979Z",
+                "attendedAt": "2019-10-19T16:37:58.979Z"
+            },
+            {
+                "requestId": 1,
+                "materialId": 11,
+                "providerId": 11,
+                "unityPrice": 110.00,
+                "createdAt": "2019-10-18T16:37:58.979Z",
+                "attendedAt": "2019-10-19T16:37:58.979Z"
+            },
+            {
+                "requestId": 1,
+                "materialId": 111,
+                "providerId": 111,
+                "unityPrice": 111.00,
+                "createdAt": "2019-10-18T16:37:58.979Z",
+                "attendedAt": "2019-10-19T16:37:58.979Z"
+            },
+            {
+                "requestId": 2,
+                "materialId": 2,
+                "providerId": 2,
+                "unityPrice": 200.00,
+                "createdAt": "2019-10-18T16:37:58.979Z",
+                "attendedAt": "2019-10-19T16:37:58.979Z"
+            },
+            {
+                "requestId": 2,
+                "materialId": 22,
+                "providerId": 22,
+                "unityPrice": 220.00,
+                "createdAt": "2019-10-18T16:37:58.979Z",
+                "attendedAt": "2019-10-19T16:37:58.979Z"
+            },
+            {
+                "requestId": 2,
+                "materialId": 222,
+                "providerId": 222,
+                "unityPrice": 222.00,
+                "createdAt": "2019-10-18T16:37:58.979Z",
+                "attendedAt": "2019-10-19T16:37:58.979Z"
+            },
+            {
+                "requestId": 3,
+                "materialId": 3,
+                "providerId": 3,
+                "unityPrice": 300.00,
+                "createdAt": "2019-10-18T16:37:58.979Z",
+                "attendedAt": "2019-10-19T16:37:58.979Z"
+            },
+            {
+                "requestId": 3,
+                "materialId": 33,
+                "providerId": 33,
+                "unityPrice": 330.00,
+                "createdAt": "2019-10-18T16:37:58.979Z",
+                "attendedAt": "2019-10-19T16:37:58.979Z"
+            },
+            {
+                "requestId": 3,
+                "materialId": 333,
+                "providerId": 333,
+                "unityPrice": 333.00,
+                "createdAt": "2019-10-18T16:37:58.979Z",
+                "attendedAt": "2019-10-19T16:37:58.979Z"
+            }
+        ]
+    }
+}

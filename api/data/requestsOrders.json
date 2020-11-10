@@ -1,40 +1,52 @@
 {
     "requestsOrders": {
         "data": [{
-                "requestId": 1,
-                "orderId": 1
+                "request": {
+                    "id": 1,
+                    "requestDate": "2019-10-18T16:37:58.979Z",
+                    "justification": "Preciso desse material para trabalhar.",
+                    "priority": "Alta",
+                    "status": 1,
+                    "desiredDate": "2019-10-18T16:37:58.979Z",
+                    "requester": 1
+                },
+                "order": {
+                    "id": 1,
+                    "status": 11,
+                    "createAt": "2019-10-18T16:37:58.979Z"
+                }
             },
             {
-                "requestId": 1,
-                "orderId": 11
+                "request": {
+                    "id": 2,
+                    "requestDate": "2019-10-18T16:37:58.979Z",
+                    "justification": "Preciso desse material para trabalhar.",
+                    "priority": "Baixa",
+                    "status": 2,
+                    "desiredDate": "2019-10-19T16:37:58.979Z",
+                    "requester": 2
+                },
+                "order": {
+                    "id": 2,
+                    "status": 22,
+                    "createdAt": "2019-10-19T16:37:58.979Z"
+                }
             },
             {
-                "requestId": 1,
-                "orderId": 111
-            },
-            {
-                "requestId": 2,
-                "orderId": 2
-            },
-            {
-                "requestId": 2,
-                "orderId": 22
-            },
-            {
-                "requestId": 2,
-                "orderId": 222
-            },
-            {
-                "requestId": 3,
-                "orderId": 3
-            },
-            {
-                "requestId": 3,
-                "orderId": 33
-            },
-            {
-                "requestId": 3,
-                "orderId": 333
+                "request": {
+                    "id": 3,
+                    "requestDate": "2019-10-18T16:37:58.979Z",
+                    "justification": "Preciso desse material para trabalhar.",
+                    "priority": "Critica",
+                    "status": 3,
+                    "desiredDate": "2019-10-20T16:37:58.979Z",
+                    "requester": 3
+                },
+                "order": {
+                    "id": 3,
+                    "status": 33,
+                    "createdAt": "2019-10-20T16:37:58.979Z"
+                }
             }
         ]
     }
