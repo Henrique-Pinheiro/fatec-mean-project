@@ -2,7 +2,12 @@ const uuidv4 = require('uuid/v4');
 
 module.exports = app => {
     const ProvidersPriceDB = app.data.providersPrices;
+    const providersDB = app.data.providers;
     const controller = {};
+
+    const {
+        providers: providersMock,
+    } = providersDB
 
     const {
         providersPrices: ProviderPriceMock,
@@ -22,7 +27,7 @@ module.exports = app => {
                 providers: ProviderPriceMock,
             });
         } else {
-            res.status(200).json(filterByProviderId(findProviders(ProviderPriceMock.data), providerId));
+            res.status(200).json(filterByProviderId(ProviderPriceMock.data, providerId));
         }
     };
 
@@ -31,7 +36,7 @@ module.exports = app => {
             providerId,
         } = req.params;
 
-        if (findProviderIndexById(providerId) == -1) {
+        if (findProviderPricesByIdProvicerId(providerId).length == 0) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
                 success: false,
@@ -39,11 +44,11 @@ module.exports = app => {
             });
         } else {
             ProviderPriceMock.data.push({
-                provider: parseInt(providerId),
+                provider: findProviderById(providerId),
                 //TODO: Verificar se existe na base de dados antes
-                price: parseInt(req.body.price),
+                price: req.body.price,
             });
-            res.status(201).json(filterByProviderId(ProviderPriceMock.data, providerId));
+            res.status(200).json(filterByProviderId(ProviderPriceMock.data, providerId));
         }
     }
 
@@ -162,6 +167,8 @@ module.exports = app => {
             matchedJsons.push(element.provider);
         });
 
+        console.log(matchedJsons)
+
         return matchedJsons;
     }
 
@@ -173,7 +180,7 @@ module.exports = app => {
         const matchedIdsJson = [];
 
         jsonArray.forEach(element => {
-            if (element.id == providerId) {
+            if (element.provider.id == providerId) {
                 matchedIdsJson.push(element);
             }
         });
@@ -191,6 +198,19 @@ module.exports = app => {
         });
 
         return matchedIdsJson;
+    }
+
+    function findProviderById(providerId) {
+
+        if (findIndexById(providerId) == -1) {
+            return null;
+        } else {
+            return providersMock.data[findIndexById(providerId)]
+        }
+    }
+
+    function findIndexById(id) {
+        return providersMock.data.findIndex(json => json.id == id);
     }
 
     return controller;
