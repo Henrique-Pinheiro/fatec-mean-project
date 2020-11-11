@@ -72,12 +72,20 @@ module.exports = app => {
                     providersPrices: filterByProviderId(ProviderPriceMock.data, providerId),
                 });
             } else {
-                ProviderPriceMock.data.splice(findIndexByPriceId(priceId), 1);
-                res.status(200).json({
-                    message: 'Fornecedor e seu cotacao econtrados e deletados com sucesso!',
-                    success: true,
-                    providers: filterByProviderId(ProviderPriceMock.data, providerId)
-                });
+                if (findIndexByIds(providerId, priceId) == null) {
+                    res.status(404).json({
+                        message: 'Cotacao não encontrada na base.',
+                        success: false,
+                        providersPrices: filterByProviderId(ProviderPriceMock.data, providerId),
+                    });
+                } else {
+                    ProviderPriceMock.data.splice(findIndexByIds(providerId, priceId), 1);
+                    res.status(200).json({
+                        message: 'Fornecedor e sua cotacao econtrados e deletados com sucesso!',
+                        success: true,
+                        providers: filterByProviderId(ProviderPriceMock.data, providerId)
+                    });
+                }
             }
         }
     };
@@ -88,33 +96,41 @@ module.exports = app => {
             priceId,
         } = req.params;
 
-        if (findProviderIndexById(providerId) == -1) {
+        if (findProviderPricesByProviderId(providerId).length == 0) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
                 success: false,
                 providers: ProviderPriceMock,
             });
         } else {
-            if (findIndexByPriceId(priceId) == -1) {
+            if (findProviderPricesByPricesId(priceId).length == 0) {
                 res.status(404).json({
                     message: 'Cotacao não encontrada na base.',
                     success: false,
-                    providersPrices: listPricesByProvidedId(ProviderPriceMock, providerId),
+                    providersPrices: filterByProviderId(ProviderPriceMock.data, providerId),
                 });
             } else {
-                const updatedJson = {
-                    providerId: parseInt(providerId),
-                    //TODO: Verificar se existe na base de dados antes
-                    price: parseInt(req.body.price),
-                };
+                if (findIndexByIds(providerId, priceId) == null) {
+                    res.status(404).json({
+                        message: 'Cotacao não encontrada na base.',
+                        success: false,
+                        providersPrices: filterByProviderId(ProviderPriceMock.data, providerId),
+                    });
+                } else {
+                    const updatedJson = {
+                        provider: findProviderById(providerId),
+                        //TODO: Verificar se existe na base de dados antes
+                        price: req.body.price,
+                    };
 
-                ProviderPriceMock.data.splice(findIndexByPriceId(priceId), 1, updatedJson);
+                    ProviderPriceMock.data.splice(findIndexByPriceId(priceId), 1, updatedJson);
 
-                res.status(200).json({
-                    message: 'Fornecedor e cotacao econtrados e alterados com sucesso!',
-                    success: true,
-                    providers: listPricesByProvidedId(ProviderPriceMock, providerId),
-                });
+                    res.status(200).json({
+                        message: 'Fornecedor e cotacao econtrados e alterados com sucesso!',
+                        success: true,
+                        providers: filterByProviderId(ProviderPriceMock.data, providerId),
+                    });
+                }
             }
         }
     }
@@ -125,25 +141,33 @@ module.exports = app => {
             priceId,
         } = req.params;
 
-        if (findProviderIndexById(providerId) == -1) {
+        if (findProviderPricesByProviderId(providerId).length == 0) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
                 success: false,
                 providers: ProviderPriceMock,
             });
         } else {
-            if (findIndexByPriceId(priceId) == -1) {
+            if (findProviderPricesByPricesId(priceId).length == 0) {
                 res.status(404).json({
                     message: 'Cotacao não encontrada na base.',
                     success: false,
-                    providersPrices: listPricesByProvidedId(ProviderPriceMock, providerId),
+                    providersPrices: filterByProviderId(ProviderPriceMock.data, providerId),
                 });
             } else {
-                res.status(200).json({
-                    message: 'Fornecedor e cotacao econtrados com sucesso!',
-                    success: true,
-                    providers: ProviderPriceMock.data[findIndexByPriceId(priceId)],
-                });
+                if (findIndexByIds(providerId, priceId) == null) {
+                    res.status(404).json({
+                        message: 'Cotacao não encontrada na base.',
+                        success: false,
+                        providersPrices: filterByProviderId(ProviderPriceMock.data, providerId),
+                    });
+                } else {
+                    res.status(200).json({
+                        message: 'Fornecedor e cotacao econtrados com sucesso!',
+                        success: true,
+                        providers: ProviderPriceMock.data[findIndexByIds(priceId, providerId)],
+                    });
+                }
             }
         }
     }
@@ -172,15 +196,12 @@ module.exports = app => {
         return matchedIdsJson;
     }
 
-
     function findProviders() {
         const matchedJsons = [];
 
         ProviderPriceMock.data.forEach(element => {
             matchedJsons.push(element.provider);
         });
-
-        console.log(matchedJsons)
 
         return matchedJsons;
     }
@@ -189,10 +210,18 @@ module.exports = app => {
         for (var i = 0; i < ProviderPriceMock.data.length; i++) {
             if (ProviderPriceMock.data[i].price.id == id) {
                 return i;
-            } else {
-                return null;
             }
         }
+        return null;
+    }
+
+    function findIndexByIds(providerId, priceId) {
+        for (var i = 0; i < ProviderPriceMock.data.length; i++) {
+            if (ProviderPriceMock.data[i].provider.id == providerId && ProviderPriceMock.data[i].price.id == priceId) {
+                return i;
+            }
+        }
+        return null;
     }
 
     function filterByProviderId(jsonArray, providerId) {
