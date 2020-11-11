@@ -15,14 +15,14 @@ module.exports = app => {
 
         const matchedIdsJson = [];
 
-        if (findProviderIndexById(providerId) == -1) {
+        if (findProviderPricesByIdProvicerId(providerId).length == 0) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
                 success: false,
                 providers: ProviderPriceMock,
             });
         } else {
-            res.status(200).json(filterByProviderId(ProviderPriceMock.data, providerId));
+            res.status(200).json(filterByProviderId(findProviders(ProviderPriceMock.data), providerId));
         }
     };
 
@@ -143,9 +143,8 @@ module.exports = app => {
         }
     }
 
-    function findProviderIndexById(id) {
+    function findProviderPricesByIdProvicerId(id) {
         const matchedIdsJson = [];
-
 
         ProviderPriceMock.data.forEach(element => {
             if (element.provider.id == id) {
@@ -153,9 +152,17 @@ module.exports = app => {
             }
         });
 
-        console.log(matchedIdsJson);
-
         return matchedIdsJson;
+    }
+
+    function findProviders() {
+        const matchedJsons = [];
+
+        ProviderPriceMock.data.forEach(element => {
+            matchedJsons.push(element.provider);
+        });
+
+        return matchedJsons;
     }
 
     function findPriceIndexById(id) {
@@ -166,7 +173,7 @@ module.exports = app => {
         const matchedIdsJson = [];
 
         jsonArray.forEach(element => {
-            if (element.provider == providerId) {
+            if (element.id == providerId) {
                 matchedIdsJson.push(element);
             }
         });
