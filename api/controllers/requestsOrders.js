@@ -67,14 +67,14 @@ module.exports = app => {
         } else {
             if (findRequestOrdersByOrdersId(orderId).length == 0) {
                 res.status(404).json({
-                    message: 'Cotacao não encontrada na base.',
+                    message: 'Pedido não encontrada na base.',
                     success: false,
                     requestsOrders: filterByRequestId(RequestOrderMock.data, requestId),
                 });
             } else {
                 if (findIndexByIds(requestId, orderId) == null) {
                     res.status(404).json({
-                        message: 'Cotacao não encontrada na base.',
+                        message: 'Pedido não encontrada na base.',
                         success: false,
                         requestsOrders: filterByRequestId(RequestOrderMock.data, requestId),
                     });
@@ -105,14 +105,14 @@ module.exports = app => {
         } else {
             if (findRequestOrdersByOrdersId(orderId).length == 0) {
                 res.status(404).json({
-                    message: 'Cotacao não encontrada na base.',
+                    message: 'Pedido não encontrada na base.',
                     success: false,
                     requestsOrders: filterByRequestId(RequestOrderMock.data, requestId),
                 });
             } else {
                 if (findIndexByIds(requestId, orderId) == null) {
                     res.status(404).json({
-                        message: 'Cotacao não encontrada na base.',
+                        message: 'Pedido não encontrada na base.',
                         success: false,
                         requestsOrders: filterByRequestId(RequestOrderMock.data, requestId),
                     });
@@ -150,14 +150,14 @@ module.exports = app => {
         } else {
             if (findRequestOrdersByOrdersId(orderId).length == 0) {
                 res.status(404).json({
-                    message: 'Cotacao não encontrada na base.',
+                    message: 'Pedido não encontrada na base.',
                     success: false,
                     requestsOrders: filterByRequestId(RequestOrderMock.data, requestId),
                 });
             } else {
                 if (findIndexByIds(requestId, orderId) == null) {
                     res.status(404).json({
-                        message: 'Cotacao não encontrada na base.',
+                        message: 'Pedido não encontrada na base.',
                         success: false,
                         requestsOrders: filterByRequestId(RequestOrderMock.data, requestId),
                     });

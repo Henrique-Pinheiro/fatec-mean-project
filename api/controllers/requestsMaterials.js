@@ -2,7 +2,12 @@ const uuidv4 = require('uuid/v4');
 
 module.exports = app => {
     const RequestsMaterialDB = app.data.requestsMaterials;
+    const requestsDB = app.data.requests;
     const controller = {};
+
+    const {
+        requests: requestsMock,
+    } = requestsDB
 
     const {
         requestsMaterials: RequestMaterialMock,
@@ -13,7 +18,9 @@ module.exports = app => {
             requestId,
         } = req.params;
 
-        if (findRequestIndexById(requestId) == -1) {
+        const matchedIdsJson = [];
+
+        if (findRequestMaterialsByRequestId(requestId).length == 0) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
                 success: false,
@@ -29,7 +36,7 @@ module.exports = app => {
             requestId,
         } = req.params;
 
-        if (findRequestIndexById(requestId) == -1) {
+        if (findRequestMaterialsByRequestId(requestId).length == 0) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
                 success: false,
@@ -37,12 +44,12 @@ module.exports = app => {
             });
         } else {
             RequestMaterialMock.data.push({
-                requestId: parseInt(requestId),
+                request: findRequestById(requestId),
                 //TODO: Verificar se existe na base de dados antes
-                materialId: parseInt(req.body.materialId),
-                amount: parseInt(req.body.amount),
+                material: req.body.material,
+                amount: req.body.amount,
             });
-            res.status(201).json(filterByRequestId(RequestMaterialMock.data, requestId));
+            res.status(200).json(filterByRequestId(RequestMaterialMock.data, requestId));
         }
     }
 
@@ -52,26 +59,34 @@ module.exports = app => {
             materialId,
         } = req.params;
 
-        if (findRequestIndexById(requestId) == -1) {
+        if (findRequestMaterialsByRequestId(requestId).length == 0) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
                 success: false,
                 requests: RequestMaterialMock,
             });
         } else {
-            if (findMaterialIndexById(materialId) == -1) {
+            if (findRequestMaterialsByMaterialsId(materialId).length == 0) {
                 res.status(404).json({
-                    message: 'Material não encontrado na base.',
+                    message: 'Material não encontrada na base.',
                     success: false,
-                    requestsMaterials: listMaterialsByProvidedId(RequestMaterialMock, requestId),
+                    requestsMaterials: filterByRequestId(RequestMaterialMock.data, requestId),
                 });
             } else {
-                RequestMaterialMock.data.splice(findMaterialIndexById(materialId), 1);
-                res.status(200).json({
-                    message: 'Solicitacao e seu material econtrados e deletados com sucesso!',
-                    success: true,
-                    requests: listMaterialsByProvidedId(RequestMaterialMock, requestId),
-                });
+                if (findIndexByIds(requestId, materialId) == null) {
+                    res.status(404).json({
+                        message: 'Material não encontrada na base.',
+                        success: false,
+                        requestsMaterials: filterByRequestId(RequestMaterialMock.data, requestId),
+                    });
+                } else {
+                    RequestMaterialMock.data.splice(findIndexByIds(requestId, materialId), 1);
+                    res.status(200).json({
+                        message: 'Solicitacao e sua material econtrados e deletados com sucesso!',
+                        success: true,
+                        requests: filterByRequestId(RequestMaterialMock.data, requestId)
+                    });
+                }
             }
         }
     };
@@ -82,34 +97,41 @@ module.exports = app => {
             materialId,
         } = req.params;
 
-        if (findRequestIndexById(requestId) == -1) {
+        if (findRequestMaterialsByRequestId(requestId).length == 0) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
                 success: false,
                 requests: RequestMaterialMock,
             });
         } else {
-            if (findMaterialIndexById(materialId) == -1) {
+            if (findRequestMaterialsByMaterialsId(materialId).length == 0) {
                 res.status(404).json({
-                    message: 'Material não encontrado na base.',
+                    message: 'Material não encontrada na base.',
                     success: false,
-                    requestsMaterials: listMaterialsByProvidedId(RequestMaterialMock, requestId),
+                    requestsMaterials: filterByRequestId(RequestMaterialMock.data, requestId),
                 });
             } else {
-                const updatedJson = {
-                    requestId: parseInt(requestId),
-                    //TODO: Verificar se existe na base de dados antes
-                    materialId: parseInt(req.body.materialId),
-                    amount: parseInt(req.body.amount),
-                };
+                if (findIndexByIds(requestId, materialId) == null) {
+                    res.status(404).json({
+                        message: 'Material não encontrada na base.',
+                        success: false,
+                        requestsMaterials: filterByRequestId(RequestMaterialMock.data, requestId),
+                    });
+                } else {
+                    const updatedJson = {
+                        request: findRequestById(requestId),
+                        //TODO: Verificar se existe na base de dados antes
+                        material: req.body.material,
+                    };
 
-                RequestMaterialMock.data.splice(findMaterialIndexById(materialId), 1, updatedJson);
+                    RequestMaterialMock.data.splice(findIndexByMaterialId(materialId), 1, updatedJson);
 
-                res.status(200).json({
-                    message: 'Solicitacao e material econtrados e alterados com sucesso!',
-                    success: true,
-                    requests: listMaterialsByProvidedId(RequestMaterialMock, requestId),
-                });
+                    res.status(200).json({
+                        message: 'Solicitacao e material econtrados e alterados com sucesso!',
+                        success: true,
+                        requests: filterByRequestId(RequestMaterialMock.data, requestId),
+                    });
+                }
             }
         }
     }
@@ -119,42 +141,95 @@ module.exports = app => {
             requestId,
             materialId,
         } = req.params;
-        if (findRequestIndexById(requestId) == -1) {
+
+        if (findRequestMaterialsByRequestId(requestId).length == 0) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
                 success: false,
                 requests: RequestMaterialMock,
             });
         } else {
-            if (findMaterialIndexById(materialId) == -1) {
+            if (findRequestMaterialsByMaterialsId(materialId).length == 0) {
                 res.status(404).json({
-                    message: 'Material não encontrado na base.',
+                    message: 'Material não encontrada na base.',
                     success: false,
-                    requestsMaterials: listMaterialsByProvidedId(RequestMaterialMock, requestId),
+                    requestsMaterials: filterByRequestId(RequestMaterialMock.data, requestId),
                 });
             } else {
-                res.status(200).json({
-                    message: 'Solicitacao e material econtrados com sucesso!',
-                    success: true,
-                    requests: RequestMaterialMock.data[findMaterialIndexById(materialId)],
-                });
+                if (findIndexByIds(requestId, materialId) == null) {
+                    res.status(404).json({
+                        message: 'Material não encontrada na base.',
+                        success: false,
+                        requestsMaterials: filterByRequestId(RequestMaterialMock.data, requestId),
+                    });
+                } else {
+                    res.status(200).json({
+                        message: 'Solicitacao e material econtrados com sucesso!',
+                        success: true,
+                        requests: RequestMaterialMock.data[findIndexByIds(materialId, requestId)],
+                    });
+                }
             }
         }
     }
 
-    function findRequestIndexById(id) {
-        return RequestMaterialMock.data.findIndex(json => json.requestId == id);
+    function findRequestMaterialsByRequestId(id) {
+        const matchedIdsJson = [];
+
+        RequestMaterialMock.data.forEach(element => {
+            if (element.request.id == id) {
+                matchedIdsJson.push(element);
+            }
+        });
+
+        return matchedIdsJson;
     }
 
-    function findMaterialIndexById(id) {
-        return RequestMaterialMock.data.findIndex(json => json.materialId == id);
+    function findRequestMaterialsByMaterialsId(id) {
+        const matchedIdsJson = [];
+
+        RequestMaterialMock.data.forEach(element => {
+            if (element.material.id == id) {
+                matchedIdsJson.push(element);
+            }
+        });
+
+        return matchedIdsJson;
+    }
+
+    function findRequests() {
+        const matchedJsons = [];
+
+        RequestMaterialMock.data.forEach(element => {
+            matchedJsons.push(element.request);
+        });
+
+        return matchedJsons;
+    }
+
+    function findIndexByMaterialId(id) {
+        for (var i = 0; i < RequestMaterialMock.data.length; i++) {
+            if (RequestMaterialMock.data[i].material.id == id) {
+                return i;
+            }
+        }
+        return null;
+    }
+
+    function findIndexByIds(requestId, materialId) {
+        for (var i = 0; i < RequestMaterialMock.data.length; i++) {
+            if (RequestMaterialMock.data[i].request.id == requestId && RequestMaterialMock.data[i].material.id == materialId) {
+                return i;
+            }
+        }
+        return null;
     }
 
     function filterByRequestId(jsonArray, requestId) {
         const matchedIdsJson = [];
 
         jsonArray.forEach(element => {
-            if (element.requestId == requestId) {
+            if (element.request.id == requestId) {
                 matchedIdsJson.push(element);
             }
         });
@@ -166,12 +241,25 @@ module.exports = app => {
         const matchedIdsJson = [];
 
         jsonObject.data.forEach(element => {
-            if (element.requestId == requestId) {
+            if (element.request == requestId) {
                 matchedIdsJson.push(element);
             }
         });
 
         return matchedIdsJson;
+    }
+
+    function findRequestById(requestId) {
+
+        if (findIndexById(requestId) == -1) {
+            return null;
+        } else {
+            return requestsMock.data[findIndexById(requestId)]
+        }
+    }
+
+    function findIndexById(id) {
+        return requestsMock.data.findIndex(json => json.id == id);
     }
 
     return controller;
