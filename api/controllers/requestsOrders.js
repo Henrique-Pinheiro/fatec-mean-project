@@ -36,7 +36,7 @@ module.exports = app => {
             requestId,
         } = req.params;
 
-        if (findRequestOrdersByRequestId(requestId).length == 0) {
+        if (findIndexById(requestId).length == -1) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
                 success: false,
@@ -58,7 +58,7 @@ module.exports = app => {
             orderId,
         } = req.params;
 
-        if (findRequestOrdersByRequestId(requestId).length == 0) {
+        if (findIndexById(requestId).length == -1) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
                 success: false,
@@ -96,7 +96,7 @@ module.exports = app => {
             orderId,
         } = req.params;
 
-        if (findRequestOrdersByRequestId(requestId).length == 0) {
+        if (findIndexById(requestId).length == -1) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
                 success: false,
@@ -141,7 +141,7 @@ module.exports = app => {
             orderId,
         } = req.params;
 
-        if (findRequestOrdersByRequestId(requestId).length == 0) {
+        if (findIndexById(requestId).length == -1) {
             res.status(404).json({
                 message: 'Solicitacao não encontrado na base.',
                 success: false,
