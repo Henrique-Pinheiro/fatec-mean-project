@@ -36,7 +36,7 @@ module.exports = app => {
             providerId,
         } = req.params;
 
-        if (findIndexById(providerId).length == -1) {
+        if (findIndexById(providerId) == -1) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
                 success: false,
@@ -58,7 +58,7 @@ module.exports = app => {
             priceId,
         } = req.params;
 
-        if (findIndexById(providerId).length == -1) {
+        if (findIndexById(providerId) == -1) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
                 success: false,
@@ -96,7 +96,7 @@ module.exports = app => {
             priceId,
         } = req.params;
 
-        if (findIndexById(providerId).length == -1) {
+        if (findIndexById(providerId) == -1) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
                 success: false,
@@ -141,7 +141,7 @@ module.exports = app => {
             priceId,
         } = req.params;
 
-        if (findIndexById(providerId).length == -1) {
+        if (findIndexById(providerId) == -1) {
             res.status(404).json({
                 message: 'Fornecedor não encontrado na base.',
                 success: false,
